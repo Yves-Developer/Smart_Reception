@@ -12,13 +12,23 @@ The system follows an **Nx-powered Monorepo** architecture. This ensures that th
 
 ### Workspace Structure
 ```text
-/Smart_Reception
-  ├── apps/
-  │   ├── client/         # React + Tailwind
-  │   └── server/         # Spring Boot (Managed via @nxrocks/nx-spring-boot)
-  ├── nx.json             # Monorepo configuration
-  ├── docker-compose.yml  # Shared infrastructure
-  └── ...
+Smart_Reception/
+├── apps/
+│   ├── frontend/       # React + Tailwind CSS
+│   └── backend/        # Spring Boot (Managed via Maven)
+├── packages/           # Common utilities/types
+├── infrastructure/     # Docker, Nginx, DevOps
+└── docker-compose.yml  # Shared orchestration
+```
+
+```mermaid
+graph LR
+    subgraph "Monorepo Root"
+        apps[apps/] --> app_fe[frontend]
+        apps --> app_be[backend]
+        infra[infrastructure/] --> nginx[nginx/]
+        pkg[packages/] --> common[common/]
+    end
 ```
 
 ---

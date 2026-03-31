@@ -4,13 +4,37 @@ This roadmap outlines the development plan for the AI Hospital Smart Reception S
 
 ---
 
-## Phase 0: Scaffolding (Nx Monorepo) ⚙️
-*Goal: Initialize the workspace and generate baseline apps.*
-- [ ] Initialize Nx Workspace: `npx create-nx-workspace@latest Smart_Reception --preset=apps`.
-- [ ] Backend Setup: Generate `@nxrocks/nx-spring-boot` app in `/apps/server`.
-- [ ] Frontend Setup: Generate React + Vite app in `/apps/client` using `@nx/react`.
-- [ ] Tailwind Integration: Configure Tailwind CSS for the Nx React app.
-- [ ] Shared Config: Create root `docker-compose.yml` for PostgreSQL and Redis.
+```mermaid
+gantt
+    title SmartReception Development Roadmap
+    dateFormat  YYYY-MM-DD
+    section Phase 0: Scaffolding
+    Manual Monorepo Setup       :done,    p0, 2026-03-31, 1d
+    Docker Orchestration        :done,    p0b, 2026-03-31, 1d
+    section Phase 1: Foundation
+    Backend MVP (JPA/Auth)      :active,  p1a, 2026-04-01, 7d
+    Frontend MVP (React/Vite)   :active,  p1b, 2026-04-01, 7d
+    section Phase 2: Communication
+    SMS/Email Integration      :         p2a, after p1a, 5d
+    Activity Logging           :         p2b, after p1a, 3d
+    section Phase 3: AI Engine
+    LangChain4j/OpenAI         :         p3a, after p2a, 10d
+    Voice/Vapi Integration      :         p3b, after p2a, 10d
+    section Phase 4: Polish
+    UI/UX Premium Polish       :         p4a, after p3b, 7d
+    Deployment & Scaling       :         p4b, after p3b, 5d
+```
+
+---
+
+## Phase 0: Scaffolding (Manual Monorepo) ⚙️
+*Goal: Initialize the workspace and generate baseline apps without Nx.*
+- [x] Initial Directory Structure (`/apps`, `/infrastructure`, `/packages`).
+- [x] Backend Setup: Spring Boot 3.2+ with Maven in `apps/backend`.
+- [x] Frontend Setup: React + Vite + TypeScript in `apps/frontend`.
+- [x] Dockerization: Multi-stage Dockerfiles for both services.
+- [x] Orchestration: Root `docker-compose.yml` for DB, Backend, and Nginx.
+- [x] CI/CD: GitHub Actions workflow for automated builds.
 
 ---
 
